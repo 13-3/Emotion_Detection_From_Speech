@@ -29,12 +29,15 @@ from sklearn.metrics import accuracy_score , confusion_matrix
 import pyaudio
 import wave
 
+# to be resolved
+# mydb = mysql.connector.connect(host="192.168.100.88", user="root", password="", database="EmotionDetection")
+
+# mycor = mydb.cursor()
 
 
 
-mydb = mysql.connector.connect(host="192.168.100.88", user="root", password="", database="EmotionDetection")
 
-mycor = mydb.cursor()
+
 
 # quary = "INSERT INTO student (stID,fName,lName,age) VALUES (1111111111, \"aaa\", \"Alshehri\", \"12\")"
 
@@ -51,14 +54,16 @@ splash_root.overrideredirect(True)
 logo_splash = PhotoImage(file="EmotionDetectionLogo.png")
 splash_lbl = Label(splash_root, image=logo_splash)
 splash_lbl.pack()
-mydb.commit()
+
+# reaolve
+# mydb.commit()
 
 def record():
     CHUNK = 1024
     FORMAT = pyaudio.paInt16
     CHANNELS = 2
     RATE = 44100
-    RECORD_SECONDS = 5
+    RECORD_SECONDS = 3
     WAVE_OUTPUT_FILENAME = "venv/audio/output.wav"
 
     p = pyaudio.PyAudio()
@@ -173,9 +178,11 @@ def main_window():
         tv.heading(4, text="Emotion")
 
         # mycor.execute("Select * from Child where childID=%s "%(q.get()))
-        mycor.execute("Select Child.childID , Child.firstName , Child.lastName , Emotion.emotionName from Child inner join Emotion on Child.emotionID = Emotion.emotionID where Child.childID =%s "%(q.get()))
-        rows = mycor.fetchall()
-        update(rows, tv)
+
+        # to be resolved
+        # mycor.execute("Select Child.childID , Child.firstName , Child.lastName , Emotion.emotionName from Child inner join Emotion on Child.emotionID = Emotion.emotionID where Child.childID =%s "%(q.get()))
+        # rows = mycor.fetchall()
+        # update(rows, tv)
 
     # View Button
     view_btn = Button(top_frame, text="  View   ", bg="#87AFC7", fg="white", borderwidth=2, command=view_win)
